@@ -39,7 +39,7 @@ function Hmod!(P, Info, εrange, Δε)
         (out, ~) = linfit(x[I[i]:I[i+1]],y[I[i]:I[i+1]])
         H[i] = out
     end
-    (H[end], ~) = linfit(x[I[1]:I[end]],y[I[1]:I[end]])
+    # (H[end], ~) = linfit(x[I[1]:I[end]],y[I[1]:I[end]])
     P[:H]   = H
     P[:ε_H] = εrange[1]+Δε/2:Δε:εrange[2]-Δε/2
 end

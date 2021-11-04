@@ -30,7 +30,7 @@ function Hmod!(P, Info, εrange, Δε)
     x = P[:ε][Info[:I][1]:Info[:I][2]]
     y = P[:σ_MPa_j][Info[:I][1]:Info[:I][2]]./1e3
     ε =  εrange[1]:Δε:εrange[2]
-    I = Ind[zeros(length(ε))]
+    I = zeros(Int64,length(ε))
     for i = 1:length(ε)
         I[i] = findlast(x .< ε[i])
     end

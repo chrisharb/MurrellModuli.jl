@@ -34,7 +34,7 @@ function Hmod!(P, Info, εrange, Δε)
     for i = 1:length(ε)
         I[i] = findlast(x .< ε[i])
     end
-    H = zeros(length(ε))
+    H = zeros(length(ε)-1)
     for i = 1:length(ε)-1
         (out, ~) = linfit(x[I[i]:I[i+1]],y[I[i]:I[i+1]])
         H[i] = out

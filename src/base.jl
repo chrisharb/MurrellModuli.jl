@@ -54,7 +54,7 @@ Inputs:
 """
 
 function YieldStress!(P, Info, Δε)
-    εpl = P[:ε][Info[:I][1]:Info[:I][2]] .-P[:σ_MPa_j]./(P[:E][1]*1e3)
+    εpl = P[:ε][Info[:I][1]:Info[:I][2]] .-P[:σ_MPa_j][Info[:I][1]:Info[:I][2]]./(P[:E][1]*1e3)
     σ = P[:σ_MPa_j][Info[:I][1]:Info[:I][2]]
     εpl .-= sum(εpl[Info[:IE][1]:Info[:IE][2]])/(Info[:IE][2]-Info[:IE][1])
     P[:σy] = σ[findfirst(εpl .> Δε)]

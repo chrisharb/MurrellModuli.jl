@@ -4,6 +4,6 @@ using OldTools
 
 include("base.jl")
 
-export YoungsMod!, Hmod!
+export YoungsMod!, Hmod!, YieldStress!
 
 end

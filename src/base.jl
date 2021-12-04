@@ -43,3 +43,19 @@ function Hmod!(P, Info, εrange, Δε)
     P[:H]   = H
     P[:ε_H] = εrange[1]+Δε/2:Δε:εrange[2]-Δε/2
 end
+
+"""
+function YieldStress!(P, Info, Δε)
+Obtain an estimate of tangent moduli using linear fitting for experiments conducted in the Murrell gas apparatus, UCL, UK.
+Inputs:
+    * P: a dictionary containing processed mechanical data from the Murrell
+    * Info: a dictionary containing information about experimental conditions, including two indices P[:I] = [1, 2], where 1 is the hit point and 2 the start of unloading.
+    * Δε: the deviation to use to define yieldstress
+"""
+
+function YieldStress!(P, Info, Δε)
+    εpl = P[:ε][Info[:I][1]:Info[:I][2]] .-P[:σ_MPa_j]./(P[:E][1]*1e3)
+    σ = P[:σ_MPa_j][Info[:I][1]:Info[:I][2]]
+    εpl .-= εpl[Info[:IE][1]]
+    P[:σy] = σ[findfirst(εpl .> Δε)]
+end

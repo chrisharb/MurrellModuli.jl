@@ -2,3 +2,6 @@ name = "MurrellModuli"
 uuid = "9fd113c4-06ca-4041-82de-da129787271f"
 authors = ["chrisharby <c.harbord@hotmail.co.uk>"]
 version = "0.1.0"
+
+[deps]
+OldTools = "b9d4be7b-a38a-4bc7-9cea-87fd3e1457f1"
